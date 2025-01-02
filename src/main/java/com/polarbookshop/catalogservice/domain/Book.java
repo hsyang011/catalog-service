@@ -29,7 +29,7 @@ public record Book( // 도메인 모델은 불가변 객체인 레코드로 구�
         String author,
 
         @NotNull(message = "The book price must be defined.")
-        @Positive(message = "The book price must be greater then zero.") // 이 필드는 널 값이 되어서는 안되고 0보다 큰 값을 가져야 한다.
+        @Positive(message = "The book price must be greater than zero.") // 이 필드는 널 값이 되어서는 안되고 0보다 큰 값을 가져야 한다.
         Double price,
 
         String publisher, // 새로운 선택적 필드
