@@ -35,7 +35,8 @@ public class BookJsonTests {
                     "isbn": "1234567890",
                     "title": "Title",
                     "author": "Author",
-                    "price": 9.90
+                    "price": 9.90,
+                    "publisher": "Polarsophia"
                 }
                 """; // 자바 텍스트 블록 기능을 사용해 JSON 객체를 정의한다.
         assertThat(json.parse(content)) // JSON에서 자바 객체로의 변환을 확인한다.
