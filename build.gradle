@@ -25,6 +25,7 @@ configurations { // 프로젝트를 빌드할 때 그래들이 설정 프로세�
 
 ext {
     set('springCloudVersion', "2024.0.0")
+    set('testcontainersVersion', "1.17.3") // 사용할 테스트컨테이너 버전을 지정한다.
 }
 
 dependencies {
@@ -36,11 +37,15 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.retry:spring-retry'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'org.postgresql:postgresql'
+    testImplementation 'org.testcontainers:postgresql' // PostgreSQL 데이터베이스에 대한 컨테이너 관리 기능을 제공한다.
 }
 
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}" // 테스트컨테이너 의존성 관리를 위한 BOM
     }
 }
 
