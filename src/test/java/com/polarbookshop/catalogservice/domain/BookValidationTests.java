@@ -23,14 +23,14 @@ public class BookValidationTests {
 
     @Test // 테스트 케이스임을 나타낸다.
     void whenAllFieldsCorrectThenValidationSucceeds() {
-        var book = Book.of("1234567890", "Title", "Author", 9.90);
+        var book = Book.of("1234567890", "Title", "Author", 9.90, "Polarsophia");
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
         assertThat(violations).isEmpty(); // 유효성 검사에서 오류가 없음을 확인한다.
     }
 
     @Test
     void whenIsbnDefinedButIncorrectThenValidationFails() {
-        var book = Book.of("a234567890", "Title", "Author", 9.90);
+        var book = Book.of("a234567890", "Title", "Author", 9.90, "Polarsophia");
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
         assertThat(violations).hasSize(1);
         assertThat(violations.iterator().next().getMessage())

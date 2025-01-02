@@ -32,6 +32,8 @@ public record Book( // 도메인 모델은 불가변 객체인 레코드로 구�
         @Positive(message = "The book price must be greater then zero.") // 이 필드는 널 값이 되어서는 안되고 0보다 큰 값을 가져야 한다.
         Double price,
 
+        String publisher, // 새로운 선택적 필드
+
         @CreatedDate // 엔티티가 생성된 때
         Instant createdDate,
 
@@ -42,8 +44,8 @@ public record Book( // 도메인 모델은 불가변 객체인 레코드로 구�
         int version
 ) {
 
-    public static Book of(String isbn, String title, String author, Double price) {
-        return new Book(null, isbn, title, author, price, null, null,0); // ID가 널이고 버전이 0이면 새로운 엔티티로 인식한다.
+    public static Book of(String isbn, String title, String author, Double price, String publisher) {
+        return new Book(null, isbn, title, author, price, publisher, null, null,0); // ID가 널이고 버전이 0이면 새로운 엔티티로 인식한다.
     }
 
 }

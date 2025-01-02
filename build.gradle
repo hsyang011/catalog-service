@@ -40,6 +40,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.testcontainers:postgresql' // PostgreSQL 데이터베이스에 대한 컨테이너 관리 기능을 제공한다.
+    implementation 'org.flywaydb:flyway-core:9.22.0'
 }
 
 dependencyManagement {

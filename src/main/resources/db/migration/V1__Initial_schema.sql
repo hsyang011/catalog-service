@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS book; -- 테이블이 이미 존재하면 삭제한다.
-CREATE TABLE book (
+CREATE TABLE book ( -- 테이블 정의
     id BIGSERIAL PRIMARY KEY NOT NULL, -- 테이블의 기본 키, 데이터베이스는 연속되는 숫자를 생성한다. (bigserial 유형)
     author VARCHAR(255) NOT NULL,
     isbn VARCHAR(255) UNIQUE NOT NULL, -- UNIQUE 제약 조건은 ISBN은 오직 하나의 책에만 할당되도록 보장한다.
