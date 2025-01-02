@@ -1,7 +1,6 @@
 package com.polarbookshop.catalogservice.web;
 
 import com.polarbookshop.catalogservice.domain.Book;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -17,7 +16,7 @@ public class BookJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        var book = new Book("1234567890", "Title", "Author", 9.90);
+        var book = Book.of("1234567890", "Title", "Author", 9.90);
         var jsonContent = json.write(book);
         assertThat(jsonContent).extractingJsonPathStringValue("@.isbn") // JsonPath 형식을 사용해 JSON 객체를 탐색하고 자바의 JSON 변환을 확인한다.
                 .isEqualTo(book.isbn());
@@ -41,7 +40,7 @@ public class BookJsonTests {
                 """; // 자바 텍스트 블록 기능을 사용해 JSON 객체를 정의한다.
         assertThat(json.parse(content)) // JSON에서 자바 객체로의 변환을 확인한다.
                 .usingRecursiveComparison()
-                .isEqualTo(new Book("1234567890", "Title", "Author", 9.90));
+                .isEqualTo(Book.of("1234567890", "Title", "Author", 9.90));
     }
 
 }

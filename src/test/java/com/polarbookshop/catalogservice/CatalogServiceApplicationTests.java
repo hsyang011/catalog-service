@@ -1,15 +1,16 @@
 package com.polarbookshop.catalogservice;
 
 import com.polarbookshop.catalogservice.domain.Book;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // 완전한 스프링 웹 애플리케이션 콘텍스트의 임의의 포트를 듣는 서블릿 컨테이너를 로드한다.
+@ActiveProfiles("integration") // application-integration.yml에서 설정을 로드하기 위해 integration 프로파일을 활성화한다.
 class CatalogServiceApplicationTests {
 
     @Autowired
@@ -17,7 +18,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	void whenPostRequestThenBookCreated() {
-        var expectedBook = new Book("1231231231", "Title", "Author", 9.90);
+        var expectedBook = Book.of("1231231231", "Title", "Author", 9.90);
 
         webTestClient
                 .post() // HTTP POST 요청을 보낸다.
