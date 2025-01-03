@@ -5,6 +5,7 @@ import com.polarbookshop.catalogservice.domain.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookController.class) // 스프링 MVC 컴포넌트에 중점을 두고, 명시적으로는 BookController클래스를 타겟으로 하는 테스트 클래스임을 나타낸다.
+@TestPropertySource(properties = "spring.cloud.config.enabled=false")
 public class BookControllerMvcTests {
 
     @Autowired

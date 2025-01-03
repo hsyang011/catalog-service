@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest // JSON 직렬화에 중점을 둔 테스트 클래스임을 나타낸다.
+@TestPropertySource(properties = "spring.cloud.config.enabled=false")
 public class BookJsonTests {
 
     @Autowired
