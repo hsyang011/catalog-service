@@ -8,7 +8,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jdbc.core.JdbcAggregateTemplate;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 
 import java.util.Optional;
 
@@ -18,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Import(DataConfig.class) // 데이터 설정을 임포트한다. (감사를 활성화하기 위해 필요)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // 테스트컨테이너를 이용해야 하기 때문에 내장 테스트 데이터베이스 사용을 비활성화한다.
 @ActiveProfiles("integration") // application-integration.yml에서 설정을 로드하기 위해 integration 프로파일을 활성화한다.
-@TestPropertySource(properties = "spring.cloud.config.enabled=false")
 public class BookRepositoryJdbcTests {
 
     @Autowired
